@@ -1,6 +1,7 @@
 # Z.ai Skills 技能集合
 
 智普GLM4.7 Skills工具包。包含完整文档、实现代码和使用示例。
+![技能](docs/images/skills.png)
 
 ![技能总览](docs/images/skills-all.png)
 
@@ -122,9 +123,10 @@
 - 创建和修改 PDF
 - 文档合并拆分
 
+![技能详情](docs/images/skills-detail.png)
+
 ## 快速开始
 
-![技能详情](docs/images/skills-detail.png)
 
 ```bash
 # 克隆仓库
