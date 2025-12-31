@@ -1,28 +1,11 @@
 import { NextResponse } from 'next/server'
-import { readFile } from 'fs/promises'
-import { existsSync } from 'fs'
-import path from 'path'
 
 export async function GET() {
   try {
-    const filePath = path.join(process.cwd(), '../skills-package.zip')
+    // 重定向到 GitHub 仓库下载
+    const githubUrl = 'https://github.com/156554395/z-ai-skills/archive/refs/heads/main.zip'
 
-    if (!existsSync(filePath)) {
-      return NextResponse.json(
-        { error: '文件不存在' },
-        { status: 404 }
-      )
-    }
-
-    const fileBuffer = await readFile(filePath)
-
-    return new NextResponse(fileBuffer, {
-      headers: {
-        'Content-Type': 'application/zip',
-        'Content-Disposition': 'attachment; filename="skills-package.zip"',
-        'Content-Length': fileBuffer.length.toString(),
-      },
-    })
+    return NextResponse.redirect(githubUrl)
   } catch (error) {
     console.error('下载错误:', error)
     return NextResponse.json(

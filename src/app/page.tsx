@@ -559,30 +559,9 @@ export default function SkillsDownloadPage() {
     ? skillsData 
     : skillsData.filter(skill => skill.category === selectedCategory)
 
-  const handleDownload = async () => {
-    try {
-      const response = await fetch('/api/download-skills', {
-        method: 'GET',
-      })
-
-      if (!response.ok) {
-        throw new Error('下载失败')
-      }
-
-      const blob = await response.blob()
-      const url = window.URL.createObjectURL(blob)
-      const a = document.createElement('a')
-      a.href = url
-      a.download = 'skills-package.zip'
-      document.body.appendChild(a)
-      a.click()
-      window.URL.revokeObjectURL(url)
-      document.body.removeChild(a)
-      setDownloaded(true)
-    } catch (error) {
-      console.error('下载错误:', error)
-      alert('下载失败，请重试')
-    }
+  const handleDownload = () => {
+    // 直接打开 GitHub 下载链接，避免 API 重定向问题
+    window.open('https://github.com/156554395/z-ai-skills/archive/refs/heads/main.zip', '_blank')
   }
 
   const handleCopyCode = async (code: string, skillId: string) => {
